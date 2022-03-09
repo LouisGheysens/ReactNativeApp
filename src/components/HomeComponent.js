@@ -1,5 +1,5 @@
 import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { React, useEffect, useState } from 'react'
 
 const windowDimensionsWidth = Dimensions.get("window").width;
 const windowDimensionsHeight = Dimensions.get("window").height;
@@ -8,12 +8,19 @@ const HomeComponent = () => {
 
     const [dimensions, setDimensions] = useState({ width: windowDimensionsWidth , height: windowDimensionsHeight});
 
+    useEffect(() => {
+        const subscribe = Dimensions.addEventListener("change", ({window}) => {
+            setDimensions({ width: window.width, height: window.height})
+        });
+        return () =>subscribe?.remove();
+    }, [input]);
+
 
   return (
     <ScrollView horizontal style={styles.container}>
       <Text>HomeComponent</Text>
-      <Text>{Dimensions.get("window").width}px</Text>
-      <Text>{Dimensions.get("window").height}px</Text>
+      <Text>{dimensions.width}px</Text>
+      <Text>{dimensions.height}px</Text>
       <View style={styles.redView}></View>
       <View style={styles.blueView}></View>
     </ScrollView>
@@ -35,7 +42,7 @@ const styles = StyleSheet.create({
       },
       blueView: {
           backgroundColor: "blue",
-          width: windowDimensionsWidth * 0.75,
+          width: dimensions.width * 0.75,
           height: 200,
       }
 })
