@@ -15,6 +15,7 @@ const HomeDimensionsHook = () => {
       <View style={styles.redView}></View>
       <Text style={styles.title}>0S: {Platform.OS}</Text>
       <Text style={styles.title}>Version: {Platform.Version}</Text>
+      <Text style={styles.title}>Constants: {JSON.stringify(Platform.constants)}</Text>
       <Text style={styles.title}>{ Platform.OS === "android" ? "Android gebruiker" : "IOS gebruiker"}
       </Text>
     </View>
