@@ -1,5 +1,6 @@
 import { StyleSheet, Text, useWindowDimensions, View, Platform } from 'react-native'
 import React from 'react'
+import HomeComponent from './HomeComponent';
 
 const HomeDimensionsHook = () => {
 
@@ -13,7 +14,9 @@ const HomeDimensionsHook = () => {
       <Text style={styles.title}>{dimensions.height}px</Text>
       <View style={styles.redView}></View>
       <Text style={styles.title}>0S: {Platform.OS}</Text>
-      <Text style={styles.title}>{ Platform.OS === "android" ? "Android gebruiker" : "IOS gebruiker"}</Text>
+      <Text style={styles.title}>Version: {Platform.Version}</Text>
+      <Text style={styles.title}>{ Platform.OS === "android" ? "Android gebruiker" : "IOS gebruiker"}
+      </Text>
     </View>
   )
 }
