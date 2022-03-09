@@ -1,7 +1,8 @@
-import { StyleSheet, Text, useWindowDimensions, View } from 'react-native'
+import { StyleSheet, Text, useWindowDimensions, View, Platform } from 'react-native'
 import React from 'react'
 
 const HomeDimensionsHook = () => {
+
 
   const windowDimensions = useWindowDimensions();
 
@@ -10,6 +11,9 @@ const HomeDimensionsHook = () => {
       <Text>HomeDimensionsHook</Text>
       <Text style={styles.title}>{dimensions.width}px</Text>
       <Text style={styles.title}>{dimensions.height}px</Text>
+      <View style={styles.redView}></View>
+      <Text style={styles.title}>0S: {Platform.OS}</Text>
+      <Text style={styles.title}>{ Platform.OS === "android" ? "Android gebruiker" : "IOS gebruiker"}</Text>
     </View>
   )
 }
@@ -23,5 +27,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 36,
+  },
+  redView: {
+    backgroundColor: "red",
+
+    height: 200,
   }
 })
