@@ -33,8 +33,12 @@ const styles = StyleSheet.create({
     fontSize: 36,
   },
   redView: {
-    backgroundColor: "red",
-
+    ...Platform.select({
+      android: { backgroundColor: "green" },
+      ios: { backgroundColor: "red" },
+      web: { backgroundColor: "blue"  },
+      default:{ backgroundColor: "white"  },
+    }),
     height: 200,
   }
 })
