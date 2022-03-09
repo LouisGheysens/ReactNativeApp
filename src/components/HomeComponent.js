@@ -1,7 +1,14 @@
 import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
+const windowDimensionsWidth = Dimensions.get("window").width;
+const windowDimensionsHeight = Dimensions.get("window").height;
+
 const HomeComponent = () => {
+
+    const [dimensions, setDimensions] = useState({ width: windowDimensionsWidth , height: windowDimensionsHeight});
+
+
   return (
     <ScrollView horizontal style={styles.container}>
       <Text>HomeComponent</Text>
@@ -28,7 +35,7 @@ const styles = StyleSheet.create({
       },
       blueView: {
           backgroundColor: "blue",
-          width: Dimensions.get("window").width * 0.75,
+          width: windowDimensionsWidth * 0.75,
           height: 200,
       }
 })
